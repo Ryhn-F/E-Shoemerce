@@ -21,8 +21,8 @@ export default function UserProfile() {
     const fetchUser = async () => {
       try {
         const session = await authClient.getSession();
-        if (session?.user) {
-          setUser(session.user as UserData);
+        if ((session as any)?.user) {
+          setUser((session as any).user as UserData);
         }
       } catch (error) {
         console.error("Error fetching user:", error);

@@ -209,7 +209,7 @@ export async function deleteProductImage(imageId: string): Promise<boolean> {
 /**
  * Get available images from public/shoes directory
  */
-export async function getAvailableShoeImages(): string[] {
+export async function getAvailableShoeImages(): Promise<string[]> {
   const shoesDir = path.join(process.cwd(), "public", "shoes");
   try {
     const files = fs.readdirSync(shoesDir);

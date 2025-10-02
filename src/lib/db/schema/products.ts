@@ -1,5 +1,4 @@
 import { pgTable, uuid, text, boolean, timestamp } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
 import { z } from "zod";
 import { categories } from "./categories";
 import { genders } from "./filters/genders";

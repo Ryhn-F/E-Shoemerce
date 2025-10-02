@@ -8,7 +8,6 @@ import { brands } from "./brands";
 import { genders } from "./filters/genders";
 import { colors } from "./filters/colors";
 import { sizes } from "./filters/sizes";
-import { user } from "./user";
 
 // Products relations
 export const productsRelations = relations(products, ({ one, many }) => ({

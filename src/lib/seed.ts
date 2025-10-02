@@ -324,10 +324,10 @@ export async function seedDatabase() {
     console.log("📊 Seeding base data...");
 
     // Get existing genders first
-    let insertedGenders = [];
+    let insertedGenders: (typeof genders.$inferSelect)[] = [];
     try {
       insertedGenders = await db.select().from(genders);
-    } catch (error) {
+    } catch {
       console.warn("⚠️ Could not fetch existing genders, will try to insert");
     }
 
@@ -356,10 +356,10 @@ export async function seedDatabase() {
     await delay(100); // Small delay to help with connection stability
 
     // Get existing colors first
-    let insertedColors = [];
+    let insertedColors: (typeof colors.$inferSelect)[] = [];
     try {
       insertedColors = await db.select().from(colors);
-    } catch (error) {
+    } catch {
       console.warn("⚠️ Could not fetch existing colors, will try to insert");
     }
 
@@ -385,10 +385,10 @@ export async function seedDatabase() {
     await delay(100);
 
     // Get existing sizes first
-    let insertedSizes = [];
+    let insertedSizes: (typeof sizes.$inferSelect)[] = [];
     try {
       insertedSizes = await db.select().from(sizes);
-    } catch (error) {
+    } catch {
       console.warn("⚠️ Could not fetch existing sizes, will try to insert");
     }
 
@@ -414,10 +414,10 @@ export async function seedDatabase() {
     await delay(100);
 
     // Get existing brands first
-    let insertedBrands = [];
+    let insertedBrands: (typeof brands.$inferSelect)[] = [];
     try {
       insertedBrands = await db.select().from(brands);
-    } catch (error) {
+    } catch {
       console.warn("⚠️ Could not fetch existing brands, will try to insert");
     }
 
@@ -443,10 +443,10 @@ export async function seedDatabase() {
     await delay(100);
 
     // Get existing categories first
-    let insertedCategories = [];
+    let insertedCategories: (typeof categories.$inferSelect)[] = [];
     try {
       insertedCategories = await db.select().from(categories);
-    } catch (error) {
+    } catch {
       console.warn(
         "⚠️ Could not fetch existing categories, will try to insert"
       );
@@ -477,10 +477,10 @@ export async function seedDatabase() {
     await delay(100);
 
     // Get existing collections first
-    let insertedCollections = [];
+    let insertedCollections: (typeof collections.$inferSelect)[] = [];
     try {
       insertedCollections = await db.select().from(collections);
-    } catch (error) {
+    } catch {
       console.warn(
         "⚠️ Could not fetch existing collections, will try to insert"
       );
@@ -512,10 +512,10 @@ export async function seedDatabase() {
     console.log(`✅ Processed ${insertedCollections.length} collections`);
 
     // Get existing users first
-    let insertedUsers = [];
+    let insertedUsers: (typeof user.$inferSelect)[] = [];
     try {
       insertedUsers = await db.select().from(user);
-    } catch (error) {
+    } catch {
       console.warn("⚠️ Could not fetch existing users, will try to insert");
     }
 

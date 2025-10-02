@@ -5,7 +5,7 @@ import { getGuestSession, createGuestSession } from "./actions";
 export async function getCurrentUser() {
   try {
     const session = await auth.api.getSession({
-      headers: new Headers()
+      headers: new Headers(),
     });
     return session?.user || null;
   } catch {
@@ -47,14 +47,29 @@ export async function hasAnySession() {
 }
 
 // Session type guards
-export function isUserSession(
-  session: any
-): session is { type: "user"; data: any } {
+interface UserSession {
+  type: "user";
+  data: {
+    id: string;
+    email: string;
+    name: string;
+  };
+}
+
+interface GuestSession {
+  type: "guest";
+  data: {
+    id: string;
+    sessionToken: string;
+  };
+}
+
+type SessionData = UserSession | GuestSession | null;
+
+export function isUserSession(session: SessionData): session is UserSession {
   return session?.type === "user";
 }
 
-export function isGuestSession(
-  session: any
-): session is { type: "guest"; data: any } {
+export function isGuestSession(session: SessionData): session is GuestSession {
   return session?.type === "guest";
 }

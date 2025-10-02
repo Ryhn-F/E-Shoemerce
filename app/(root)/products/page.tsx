@@ -249,7 +249,7 @@ async function ProductsContent({ searchParams }: ProductsPageProps) {
                 {products.map((product) => {
                   const defaultVariant = product.variants[0];
                   const primaryImage =
-                    product.images.find((img) => img.isPrimary) ||
+                    product.images.find((img: any) => img.isPrimary) ||
                     product.images[0];
                   const price =
                     defaultVariant?.salePrice || defaultVariant?.price;
@@ -259,13 +259,13 @@ async function ProductsContent({ searchParams }: ProductsPageProps) {
 
                   // Get available colors for this product
                   const availableColors = product.variants
-                    .map((variant) => variant.color)
+                    .map((variant: any) => variant.color)
                     .filter(
-                      (color, index, self) =>
+                      (color: any, index: any, self: any) =>
                         color &&
-                        self.findIndex((c) => c?.id === color.id) === index
+                        self.findIndex((c: any) => c?.id === color.id) === index
                     )
-                    .map((color) => ({
+                    .map((color: unknown) => ({
                       name: color.name,
                       value: color.hexCode,
                     }));

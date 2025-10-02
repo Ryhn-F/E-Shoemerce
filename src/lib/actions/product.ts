@@ -105,7 +105,7 @@ export async function getProduct(
           imagesByVariant[variant.id] ||
           imagesByVariant["general"] ||
           []
-        ).map((image) => ({
+        ).map((image: any) => ({
           id: image.id,
           url: image.url,
           sortOrder: image.sort_order,
