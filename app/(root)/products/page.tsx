@@ -229,7 +229,9 @@ async function ProductsContent({ searchParams }: ProductsPageProps) {
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className="w-64 flex-shrink-0">
-            <Filters />
+            <Suspense fallback={<div>Loading filters...</div>}>
+              <Filters />
+            </Suspense>
           </aside>
 
           {/* Main Content */}
@@ -240,7 +242,9 @@ async function ProductsContent({ searchParams }: ProductsPageProps) {
                 Showing {products.length} result
                 {products.length !== 1 ? "s" : ""}
               </p>
-              <Sort />
+              <Suspense fallback={<div>Loading sort...</div>}>
+                <Sort />
+              </Suspense>
             </div>
 
             {/* Products Grid */}
@@ -263,7 +267,8 @@ async function ProductsContent({ searchParams }: ProductsPageProps) {
                     .filter(
                       (color: any, index: any, self: any) =>
                         color &&
-                        self.findIndex((c: any) => c?.id === color.id) === index
+                        self.findIndex((c: unknown) => c?.id === color.id) ===
+                          index
                     )
                     .map((color: unknown) => ({
                       name: color.name,
