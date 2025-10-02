@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "@/src/lib/db/index-simple";
+import { db } from "@/src/lib/db/index";
 import { brands } from "@/src/lib/db/schema";
 import { mockBrands } from "@/src/lib/mock-data";
 
